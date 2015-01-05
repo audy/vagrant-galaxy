@@ -3,6 +3,7 @@
 # Notes
 # * use this instead: http://cfgparse.sourceforge.net/
 
+GALAXY_HOME='/home/galaxy/galaxy-dist'
 
 from fabric.api import *
 from fabtools.vagrant import vagrant
@@ -27,19 +28,19 @@ def galaxy(cmd):
         print "Invalid directive to Galaxy"
         
 def start_galaxy():
-    with cd('/vagrant/galaxy-dist'):
+    with cd(GALAXY_HOME):
         sudo('./run.sh --daemon')
 def stop_galaxy():
-    with cd('/vagrant/galaxy-dist'):
+    with cd(GALAXY_HOME):
         sudo('./run.sh --stop-daemon')
         
 def restart_galaxy():
-    with cd('/vagrant/galaxy-dist'):
+    with cd(GALAXY_HOME):
         sudo('./run.sh --stop-daemon')
         sudo('./run.sh --daemon')
 
 def status():
-    with cd('/vagrant/galaxy-dist'):
+    with cd(GALAXY_HOME):
         sudo('./run.sh --status')
 
 # Tool Shed
@@ -57,19 +58,20 @@ def toolshed(cmd):
         print "Invalid directive to Galaxy Toolshed"
         
 def start_toolshed():
-    with cd('/vagrant/galaxy-dist'):
+    with cd(GALAXY_HOME):
         run('./run_tool_shed.sh --daemon')
+
 def stop_toolshed():
-    with cd('/vagrant/galaxy-dist'):
+    with cd(GALAXY_HOME):
         run('./run_tool_shed.sh --stop-daemon')
         
 def restart_toolshed():
-    with cd('/vagrant/galaxy-dist'):
+    with cd(GALAXY_HOME):
         run('./run_tool_shed.sh --stop-daemon')
         run('./run_tool_shed.sh --daemon')
 
 def toolshed_status():
-    with cd('/vagrant/galaxy-dist'):
+    with cd(GALAXY_HOME):
         run('./run_tool_shed.sh --status')
 
 #############################
