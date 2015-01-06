@@ -29,19 +29,19 @@ def galaxy(cmd):
         
 def start_galaxy():
     with cd(GALAXY_HOME):
-        sudo('./run.sh --daemon')
+        run('./run.sh --daemon')
 def stop_galaxy():
     with cd(GALAXY_HOME):
-        sudo('./run.sh --stop-daemon')
+        run('./run.sh --stop-daemon')
         
 def restart_galaxy():
     with cd(GALAXY_HOME):
-        sudo('./run.sh --stop-daemon')
-        sudo('./run.sh --daemon')
+        run('./run.sh --stop-daemon')
+        run('./run.sh --daemon')
 
 def status():
     with cd(GALAXY_HOME):
-        sudo('./run.sh --status')
+        run('./run.sh --status')
 
 # Tool Shed
 @task
@@ -59,20 +59,20 @@ def toolshed(cmd):
         
 def start_toolshed():
     with cd(GALAXY_HOME):
-        run('./run_tool_shed.sh --daemon')
+        sudo('./run_tool_shed.sh --daemon')
 
 def stop_toolshed():
     with cd(GALAXY_HOME):
-        run('./run_tool_shed.sh --stop-daemon')
+        sudo('./run_tool_shed.sh --stop-daemon')
         
 def restart_toolshed():
     with cd(GALAXY_HOME):
-        run('./run_tool_shed.sh --stop-daemon')
-        run('./run_tool_shed.sh --daemon')
+        sudo('./run_tool_shed.sh --stop-daemon')
+        sudo('./run_tool_shed.sh --daemon')
 
 def toolshed_status():
     with cd(GALAXY_HOME):
-        run('./run_tool_shed.sh --status')
+        sudo('./run_tool_shed.sh --status')
 
 #############################
 # software package management
